@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  .row
+    .col.s3.input-field
+      input#nb_cote(type="number", name="nombre_de_cote")
+      label(for="nb_cote") Nombre de côtés
+    .col.s3.input-field
+      input#nb_angle_droit(type="number", name="nombre_angle_droit")
+      label(for="nb_angle_droit") Nombre d'angles droits
+    .col.s3.input-field
+      input#nb_meme_longeur(type="number", name="nombre_cote_de_la_meme_longeur")
+      label(for="nb_meme_longeur") Nombre de cotés de la même longeur
+    .col.s3.input-field
+      input#nb_parrallele(type="number", name="nombre_cote_parallele")
+      label(for="nb_parrallele") Nombre de cotés parrallèles
+  .row
+    .col.s12.center
+      a.btn#run Run
+  .row
+    .col.s12
+      p Message :
+      p#message
