@@ -1,9 +1,18 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
+const Forme = require('../class/Forme')
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', function(req, res) {
+	res.render('index', { title: 'Express' })
+})
 
-module.exports = router;
+router.post('/solve', (req, res) => {
+  const polygone = req.body
+
+  const forme = new Forme(polygone.cote, polygone.angleDroits, polygone.memeLongueur, polygone.parralle)
+
+  
+  res.json("J'en sais rien frère.")
+})
+
+module.exports = router
