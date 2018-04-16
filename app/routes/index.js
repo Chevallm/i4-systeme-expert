@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-var express = require('express')
-var router = express.Router()
-const Forme = require('../class/Forme')
-
-router.get('/', function(req, res) {
-	res.render('index', { title: 'Express' })
-=======
 const express = require('express');
 const router = express.Router();
 
@@ -22,7 +14,6 @@ router.post('/solve', (req, res) => {
   const polygoneUtilisateur = {nbCote: p.nbCote, nbAngleDroit: p.nbAngleDroit, nbCoteMemeLongueur: p.nbCoteMemeLongueur, nbCoteParallele: p.nbCoteParallele}
   const se = new MoteurInference(polygoneUtilisateur)
   res.send(se.resoudre())
->>>>>>> d5931fd1eafeca599f3b8ec4d37250d2ba262dd6
 })
 
 router.post('/solve', (req, res) => {
