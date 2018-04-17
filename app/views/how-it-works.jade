@@ -1,0 +1,87 @@
+extends layout
+
+block content
+  .container
+    .row
+        .col.s12
+            .card-panel.center
+                a(href="/").btn.red retour
+    .row
+      .col.s12
+        .card-panel
+            .row
+                .col.s12
+                    blockquote Un système expert est un outil capable de reproduire les mécanismes cognitifs d'un expert, dans un domaine particulier.
+            .row
+                .col.s12
+                    p Un Système expert est constitué d'une base de règles (connaissance experte) et d'une base de faits (déductions). Une règle est définie par 1..n prémisse (une condition) et d'une conclusion. On peux dire que la règle est valide quand toutes les prémisses sont vrai.
+                    blockquote
+                        p ex: SI (la forme a 3 côtés ET un angle droit) ALORS c'est un triangle.
+                    p Un fait est une vérité sur l'objet, dans notre cas un fait peux être qu'il a 4 côtés ou qu'il soit un triangle isocèle. La différence dans notre cas est que nous avons quelques faits d'origine (les données saisies dans l'interface: nos entrées). Grâce à ceux-ci, nous alons pouvoir vérifier qu'un régle est applicable (que ses prémisses sont toutes vrai). Si nous en trouvons nous ajoutons la conclusion de la règle à notre base de faits. Nous répétons cette opération jusqu'à ce qu'aucune règle ne soit applicable. Nous avons donc une liste de faits finale. Nous avons implémenté un système de niveau de pertinance nous permettant de savoir quel fait est le plus pertinant (on préfère savoir qu'on a un triangle isocèle qu'un polygone avec 2 côtés de même longueur).
+                    p Voici le pseudo-code qui illustre ce qui est inscrit ci-dessus :
+                    pre
+                        code
+                            | DEBUT
+                            |   ENTREES
+                            |       nombre_de_côtés : entier
+                            |       nombre_d_angle_droit : entier
+                            |       nombre_de_côtés_de_même_longueur : entier
+                            |       nombre_de_côtés_parallèle : entier
+                            |       fichier_comportenant_les_règles : fichier
+                            |   START
+                            |       base_de_règles ← fichier_comportenant_les_règles
+                            |       base_de_faits ← déduire_les_faits(nombre_de_côtés, nombre_d_angle_droit, nombre_de_côtés_de_même_longueur, nombre_de_côtés_parallèle)
+                            |       tant que (trouver_une_règle_applicable() != vide)
+                            |           règle ← trouver_une_règle_applicable()
+                            |           fait ← Fait(règle.conclusion, règle.niveau) # Le niveau pour avoir le fait le plus pertinant
+                            |           base_de_faits.ajouter(fait)
+                            |           base_de_règles.enlever(règle) # Pour ne pas avoir de boucle infini
+                            |    SORTIES
+                            |       base_de_faits.fait_avec_le_plus_haut_niveau          
+                    p Voici ci-dessus le fonctionnement du Moteur d'inférence. C'est ce moteur qui permet de résoudre le problème grâce à la base de règle. L'implémentation réalisé ici s'appelle un chaînage avant.
+                    blockquote Le chaînage avant est une méthode de déduction qui applique des règles en partant des prémisses pour en déduire de nouvelles conclusions.
+                    p Prenons pour exemple un polygone a 3 côtés et un angle droit.
+                    .row
+                        .col.s8
+                            img(src="./images/système-expert-triangle-exemple.png", alt="").responsive
+                        .col.s4
+                            p Ici les règles sont les suivantes:
+                            ul.browser-default
+                                li si (3 côtés) alors triangle
+                                li si (1 angle droit et triangle) alors triangle rectangle
+                                li si (2 côtés de même longueur et triangle) alors triangle isocèle
+                                li si (triangle rectangle et triangle isocèle) alors triangle isocèle rectangle
+                    p Voici notre base de faits:
+                    ul.browser-default
+                        li 3 côtés
+                        li 1 angle droit
+                    p On cherche une règle applicable. La seule est "si (3 côtés) alors triangle". On ajoute donc la conclusion "triangle" à notre base de faits qui est maintenant :
+                    ul.browser-default
+                        li 3 côtés
+                        li 1 angle droit
+                        li triangle
+                    p et notre base de règle se voit amputé de cette règle :
+                    ul.browser-default
+                                li si (1 angle droit et triangle) alors triangle rectangle
+                                li si (2 côtés de même longueur et triangle) alors triangle isocèle
+                                li si (triangle rectangle et triangle isocèle) alors triangle isocèle rectangle
+                    p On recherche une règle encore: et on trouve uniquement "si (1 angle droit et triangle) alors triangle rectangle". Donc on répète et on a comme base de faits:
+                    ul.browser-default
+                        li 3 côtés
+                        li 1 angle droit
+                        li triangle
+                        li triangle rectangle
+                    p et notre base de règles :
+                    ul.browser-default
+                        li si (1 angle droit et triangle) alors triangle rectangle
+                        li si (2 côtés de même longueur et triangle) alors triangle isocèle
+                        li si (triangle rectangle et triangle isocèle) alors triangle isocèle rectangle
+                    p A partir de ce moment nous ne pouvons plus appliquer de règles donc nous arretons de chercher et renvoyons le fait le plus pertinant: c'est un triangle rectangle.
+                    p Voici le diagramme de classe de cette application:
+                    .center
+                        img(src="./images/systeme-expert-classes.PNG", alt="Diagramme de classes")
+    .row
+        .col.s12
+            .card-panel.center
+                a(href="/").btn.red retour
+
