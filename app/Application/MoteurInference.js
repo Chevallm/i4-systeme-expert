@@ -11,7 +11,7 @@ class MoteurInference {
         // Chargement de la base de règles depuis le fichier regles.yml
         this.baseDeRegles = new BaseDeRegles()
         try {
-            this.baseDeRegles.initialiser(YAML.load('Application/regles.yml').map( r => new Regle(r.conditions, r.conclusion, r.nom, r.niveau)))
+            this.baseDeRegles.initialiser(YAML.load('../Application/regles.yml').map( r => new Regle(r.conditions, r.conclusion, r.nom, r.niveau)))
         } catch(error) {
             console.error("Impossible de charger le fichier regles.yml || ", error.message)
         }
