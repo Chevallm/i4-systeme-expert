@@ -1,8 +1,0 @@
-# RESPECTER LA MISE EN FORME DES REGLES
-# SI ( CONDITION OU ENSEMBLE DE CONDITIONS ) ALORS NOUVELLE CONCLUSION
-
-SI (3 cotes) ALORS c'est un triangle
-SI (c'est un triangle ET qu'il a un angle droit) ALORS c'est un triangle rectangle
-SI (c'est un triangle ET qu'il a 2 côtés de même longeur) ALORS c'est un triangle isocèle
-SI (c'est un triangle rectangle et c'est un triangle isocèle) ALORS c'est un triangle rectangle isocèle
-SI (c'est un triangle )
