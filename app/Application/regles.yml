@@ -21,3 +21,38 @@
   - 'triangle isocèle'
   conclusion: 'triangle isocèle rectangle'
   niveau: 3
+- nom: 'Q'
+  conditions:
+  - 'ordre 4'
+  conclusion: 'quadrilatère'
+  niveau: 1
+- nom: 'Tra'
+  conditions:
+  - '2 côtés parallèles'
+  - 'quadrilatère'
+  conclusion: 'trapèze'
+  niveau: 2
+- nom: 'P'
+  conditions:
+  - 'quadrilatère'
+  - '4 côtés parallèles'
+  conclusion: 'parallélograme'
+  niveau: 2
+- nom: 'L'
+  conditions:
+  - 'parallélograme'
+  - '4 côtés de même longueur'
+  conclusion: 'losange'
+  niveau: 3
+- nom: 'R'
+  conditions:
+  - '1 angle droit'
+  - 'parallélograme'
+  conclusion: 'rectangle'
+  niveau: 3
+- nom: 'C'
+  conditions:
+  - 'losange'
+  - 'rectangle'
+  conclusion: 'carré'
+  niveau: 4
