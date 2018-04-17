@@ -56,3 +56,12 @@
   - 'rectangle'
   conclusion: 'carré'
   niveau: 4
+- nom: 'Pe'
+  conditions:
+  - 'ordre 5'
+  conclusion: 'pentagone'
+- nom: 'PR'
+  conditions:
+  - 'pentagone'
+  - '5 côtés de même longueur'
+  conclusion: 'pentagone régulier'
