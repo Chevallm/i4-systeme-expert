@@ -4,9 +4,20 @@ html
     title= title
     link(rel='stylesheet', href='./stylesheets/style.css')
     link(rel="stylesheet", href="./stylesheets/materialize.min.css")
-  body
-    h1.center Système Expert en polygone
+  body.grey.lighten-4
+    h1.center <img src='./images/scientist.png'/ alt='Icone de mathématicien'>Système Expert en polygone
     block content
+    .container
+      .row
+        .col.s12
+          .card-panel
+            .container
+              p
+                a(href="mailto:m.chevallierpichon@epsi.fr") Maxime Chevallier-Pichon 
+                span & 
+                a(href="mailto:gabriel.fruhauf@epsi.fr") Gabriel Fruhauf 
+                span pour le projet i4-systeme-expert (EPSI I4)
+
   script(src="./javascripts/jquery.min.js")
   script(src="./javascripts/materialize.min.js")
   script(src="./javascripts/main.js")
