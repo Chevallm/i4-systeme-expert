@@ -62,7 +62,6 @@ class MoteurInference {
         
         const listeRegles = new BaseDeRegles()
         listeRegles.initialiser(br.getRegles())
-        console.log(listeRegles.getRegles().length);
           
         while(listeRegles.getRegles().length > 0) {
             
