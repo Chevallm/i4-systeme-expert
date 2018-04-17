@@ -2,3 +2,13 @@
   min-height: 4em;
   padding: 1em
 }
+
+.resultat {
+  border: 1px solid #f44336;
+  border-left: 10px solid #f44336;
+  border-radius: 5px;
+}
+
+.labelMessage {
+  font-weight: bold;
+}
