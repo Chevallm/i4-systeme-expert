@@ -2,18 +2,22 @@
   conditions:
   - 'ordre 3'
   conclusion: 'triangle'
+  niveau: 1
 - nom: 'TR'
   conditions:
   - 'triangle'
   - '1 angle droit'
   conclusion: 'triangle rectangle'
+  niveau: 2
 - nom: 'TI'
   conditions:
   - 'triangle'
   - '2 côtés de même longueur'
   conclusion: 'triangle isocèle'
+  niveau: 2
 - nom: 'TRI'
   conditions:
   - 'triangle rectangle'
   - 'triangle isocèle'
   conclusion: 'triangle isocèle rectangle'
+  niveau: 3

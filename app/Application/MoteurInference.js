@@ -11,7 +11,7 @@ class MoteurInference {
         // Chargement de la base de règles depuis le fichier regles.yml
         this.baseDeRegles = new BaseDeRegles()
         try {
-            this.baseDeRegles.initialiser(YAML.load('Application/regles.yml').map( r => new Regle(r.conditions, r.conclusion, r.nom)))
+            this.baseDeRegles.initialiser(YAML.load('Application/regles.yml').map( r => new Regle(r.conditions, r.conclusion, r.nom, r.niveau)))
         } catch(error) {
             console.error("Impossible de charger le fichier regles.yml || ", error.message)
         }
@@ -68,8 +68,8 @@ class MoteurInference {
             
             const regle = this.trouverUneRegleApplicable(listeRegles)           
             
-            if(regle) {             
-                const fait = new Fait(regle.conclusion, regle.niveau + 1)                            
+            if(regle) {                
+                const fait = new Fait(regle.conclusion, regle.niveau)                            
                 bf.ajouterFait(fait)                                          
                 listeRegles.retirerRegle(regle.nom)          
             } else {
@@ -77,7 +77,7 @@ class MoteurInference {
             }
         }
 
-        return bf.afficher()
+        return bf.afficherLePlusHaut()
     }
 
 

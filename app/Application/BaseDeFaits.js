@@ -30,7 +30,14 @@ class BaseDeFaits {
     }
 
     afficher() {
-        return this.faits.length > 0 ? this.faits.map( f => {return `${f.nom}`}).join(", ") : "Je ne sais pas"
+        return this.faits.length > 0 ? this.faits.map( f => {return `${f.nom} (${f.niveau})`}).join(", ") : "Je ne sais pas"
+    }
+
+    afficherLePlusHaut() {        
+        const tableauTrie = this.getFaits().sort( (fait, ancienFait)  => {            
+            return fait.niveau - ancienFait.niveau            
+        })
+        return tableauTrie[tableauTrie.length-1].nom
     }
 
     getFaits() {
