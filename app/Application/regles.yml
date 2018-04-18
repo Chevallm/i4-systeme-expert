@@ -21,6 +21,12 @@
   - 'triangle isocèle'
   conclusion: 'triangle isocèle rectangle'
   niveau: 3
+- nom: 'I'
+  conditions:
+  - 'triangle'
+  - '3 côtés de même longueur'
+  conclusion: 'triangle équilatéral'
+  niveau: 2
 - nom: 'Q'
   conditions:
   - 'ordre 4'
